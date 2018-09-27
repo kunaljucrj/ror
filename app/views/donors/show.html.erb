@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @donor.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @donor.email %>
+</p>
+
+<p>
+  <strong>Phoneno:</strong>
+  <%= @donor.phoneNo %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @donor.gender %>
+</p>
+
+<p>
+  <strong>Age:</strong>
+  <%= @donor.age %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @donor.city %>
+</p>
+
+<p>
+  <strong>Bloodgroup:</strong>
+  <%= @donor.bloodGroup %>
+</p>
+
+<p>
+  <strong>Lastdonatedate:</strong>
+  <%= @donor.lastDonateDate %>
+</p>
+
+<!--<b><%= link_to 'Edit', edit_donor_path(@donor) %></b> |-->
+<b><%= link_to 'New Donor', new_donor_path %></b> <br><br>
+
+<b><%= link_to 'Home', root_path %></b>

@@ -1,0 +1,42 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ 
+<div class="requestcontainer">
+  
+<%= form_with(model: request, local: true) do |form| %>
+  <% if request.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(request.errors.count, "error") %> prohibited this request from being saved:</h2>
+
+      <ul>
+      <% request.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :noOfDonors %><br>
+    <%= form.number_field :noOfDonors %>
+  </div>
+
+  <div class="field">
+    <%= form.label :bloodGroup %><br>
+    <%= form.select(:bloodGroup, options_for_select([['B+','B+'],['B-','B-'],['A+','A+'],['A-','A-'],['O+','O+'],['O-','O-'],['AB+','AB+'],['AB-','AB-']]))%>
+  </div>
+
+  <div class="field">
+    <%= form.label :city %><br>
+    <%= form.text_field :city %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %><br>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="actions">
+    <%= submit_tag "Submit Request" , class: "btn btn-primary" %>
+  </div>
+<% end %>
+</div> 

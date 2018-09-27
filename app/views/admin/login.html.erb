@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+      h1 {
+        padding-top : 80px;
+      }
+
+      p.details {
+        padding-top : 20px;
+      }
+
+      p.link2 {
+        padding-left: 0;
+        position: relative;
+       left: 180px;
+      }
+
+      p.link4 {
+        padding-left: 0;
+        position: relative;
+       left: 180px;
+      }
+
+
+      p.link1 {
+        position: relative;
+        left: -112px;
+        top: 32px;
+      }
+
+      p.link3 {
+        position: relative;
+        left: -112px;
+        top: 32px;
+      }
+
+
+      .submit1
+      {
+        position: relative;
+        left: 38px;
+
+      }
+
+      .Container
+      {
+        position: relative;
+        left: 560px;
+        top: -55px;
+      }
+
+      div {
+        padding-top : 50px;
+      }
+    </style>
+  </head>
+  <body class="adminbody">
+
+  <center>
+    <head>
+      
+    </head>
+
+  <div class="Container">
+    <h1>Admin Login</h1>
+    <p style="color:red" id="notice"><%= notice %></p>
+    <%= form_tag("/", method: "post") do %>
+      
+      <p class = "details">
+        <%= label_tag(:username, "Username:") %>
+        <%= text_field_tag(:username) %><br>
+      </p>
+      
+      <p>
+        <%= label_tag(:password, "Password:") %>
+        <%= password_field_tag(:password) %><br><br>
+      </p>
+      
+      <p>
+        <%= submit_tag "Log in" , class: "submit1 btn btn-danger" %>
+      </p>
+    <br>
+
+      <b><p class="link1"><%= link_to 'New Donor', new_donor_path %></p></b>
+      <b><p class="link2"><%= link_to 'Request Status', requeststatus_path %></p></b> 
+      <b><p class="link3"><%= link_to 'New Request', new_request_path %></p></b>
+      <b><p class="link4"><%= link_to 'Check Availability', available_path %></p></b>
+
+    <% end %>
+  </div>
+
+  </center>
+
+
+
+  </body>
+</html>
+

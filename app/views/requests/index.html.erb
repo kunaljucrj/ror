@@ -1,0 +1,67 @@
+<head>
+  <style>
+    div {
+      float : right;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 8px;
+    }
+
+    tr:nth-child(even) {background-color: #f2f2f2;}
+
+    th {
+      background-color: #4CAF50;
+      color: white;
+    }
+  </style>
+</head>
+<p id="notice"><%= notice %></p>
+
+<% if(!session[:username]) %>
+  <h1>You are not authorised to view this page.</h1><br><br>
+  <b><%= link_to 'Home', root_path %></b>
+<% else %>
+  <h1>Requests</h1>
+  <div>
+    <b><%= link_to 'Home', root_path %></b> &nbsp | &nbsp
+    <a><b><%= link_to 'LOG OUT', logout_path %></b></a>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Noofdonors</th>
+        <th>Bloodgroup</th>
+        <th>City</th>
+        <th>Email</th>
+        <th>Serviced</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @requests.each do |request| %>
+        <tr>
+          <td><%= request.noOfDonors %></td>
+          <td><%= request.bloodGroup %></td>
+          <td><%= request.city %></td>
+          <td><%= request.email %></td>
+          <% if request.serviced == true %>
+            <td>Yes</td>
+          <% else %>
+            <td>No</td>
+          <% end %>
+          <!--
+            <td><b><%= link_to 'Edit', edit_request_path(request) %></b></td>
+          -->
+          <td><b><%= link_to 'Destroy', request, method: :delete, data: { confirm: 'Are you sure?' } %></b></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+

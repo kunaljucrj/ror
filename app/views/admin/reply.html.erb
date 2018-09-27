@@ -1,0 +1,86 @@
+<% if @donors.size > 0  %>
+  <p id="notice"><%= notice %></p>
+
+  <h1>Donors</h1>
+
+  <head>
+    <style>
+      div {
+        float : right;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      th, td {
+        text-align: left;
+        padding: 8px;
+      }
+
+      tr:nth-child(even) {background-color: #f2f2f2;}
+
+      th {
+        background-color: #4CAF50;
+        color: white;
+      }
+
+      p {
+        text-align : center
+      }
+    </style>
+  </head>
+
+  <div>
+    <b><%= link_to 'Back', admin_index_path %></b> &nbsp | &nbsp
+    <b><%= link_to 'LOG OUT', logout_path %></b> 
+  </div>  
+
+  <br><br>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phoneno</th>
+        <th>Gender</th>
+        <th>Age</th>
+        <th>City</th>
+        <th>Bloodgroup</th>
+        <th>Lastdonatedate</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @donors.each do |donor| %>
+        <tr>
+          <td><%= donor.name %></td>
+          <td><%= donor.email %></td>
+          <td><%= donor.phoneNo %></td>
+          <td><%= donor.gender %></td>
+          <td><%= donor.age %></td>
+          <td><%= donor.city %></td>
+          <td><%= donor.bloodGroup %></td>
+          <td><%= donor.lastDonateDate %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <% @donors.each do |donor| %>
+    <% donor.lastDonateDate = Time.now %>
+    <% donor.save %>  
+  <% end %>
+
+  <br>
+
+  <b><p>Request email: <%= @request.email %></p></b>
+<% else %>
+  <div style = "float : right" >
+    <b><%= link_to 'Back', admin_index_path %></b> &nbsp | &nbsp
+    <b><%= link_to 'LOG OUT', logout_path %></b> 
+  </div> 
+  <h1>No donors available</h1>
+<% end %>

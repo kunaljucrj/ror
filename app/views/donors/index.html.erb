@@ -1,0 +1,67 @@
+<head>
+  <style>
+    div {
+      float : right;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 8px;
+    }
+
+    tr:nth-child(even) {background-color: #f2f2f2;}
+
+    th {
+      background-color: #4CAF50;
+      color: white;
+    }
+  </style>
+</head>
+<p id="notice"><%= notice %></p>
+
+<% if(!session[:username]) %>
+  <h1>You are not authorised to view this page.</h1><br><br>
+  <b><%= link_to 'Home', root_path %></b>
+<% else %>
+  <h1>Donors</h1>
+  <div>
+    <b><%= link_to 'Home', root_path %></b> &nbsp | &nbsp
+    <a><b><%= link_to 'LOG OUT', logout_path %></b></a>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phoneno</th>
+        <th>Gender</th>
+        <th>Age</th>
+        <th>City</th>
+        <th>Bloodgroup</th>
+        <th>Lastdonatedate</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @donors.each do |donor| %>
+        <tr>
+          <td><%= donor.name %></td>
+          <td><%= donor.email %></td>
+          <td><%= donor.phoneNo %></td>
+          <td><%= donor.gender %></td>
+          <td><%= donor.age %></td>
+          <td><%= donor.city %></td>
+          <td><%= donor.bloodGroup %></td>
+          <td><%= donor.lastDonateDate %></td>
+          <!--<td><b><%= link_to 'Edit', edit_donor_path(donor) %></b></td>-->
+          <td><b><%= link_to 'Destroy', donor, method: :delete, data: { confirm: 'Are you sure?' } %></b></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+

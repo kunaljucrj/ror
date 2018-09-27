@@ -1,0 +1,15 @@
+<% if !@request.present? %>
+	<h1>Your request does not exists</h1>
+
+<% else %>
+	<% @request.each do |request| %>
+		<% if request.serviced %>
+		    <h1>Request Serviced</h1>
+		<% else %>
+		     <h1>Processing Request</h1>
+		<% end %>
+	<% end %>
+<% end %>
+ <div>
+	<b><%= link_to 'Home', root_path %></b>
+</div>

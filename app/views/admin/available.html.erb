@@ -1,0 +1,53 @@
+<% if !@donors.present? %>
+  <h1>No Donors Available</h1><br>
+  <b><%= link_to 'Home', root_path %></b>
+
+<% else %>
+   <head>
+      <style>
+        div {
+          float : right;
+        }
+        table {
+          border-collapse: collapse;
+          width: 100%;
+        }
+
+        th, td {
+          text-align: left;
+          padding: 8px;
+        }
+
+        tr:nth-child(even) {background-color: #f2f2f2;}
+
+        th {
+          background-color: #4CAF50;
+          color: white;
+        }
+      </style>
+    </head>
+
+    <h1>Available Donors</h1>
+    <div>
+    	<b><%= link_to 'Home', root_path %></b>
+    </div>
+    <table>
+    <thead>
+      <tr>
+        <th>Bloodgroup</th>
+        <th>City</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @donors.each do |donor| %>
+        <tr>
+          <td><%= donor[0][0] %></td>
+          <td><%= donor[0][1] %></td>
+          <td><%= donor[1] %></td>
+        </tr>
+      <% end %>
+    </tbody>
+    </table>
+<% end %>

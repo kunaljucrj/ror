@@ -1,0 +1,17 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<div class= "requeststatus">
+	<h1>Check Request Status</h1>
+	<p style="color:red" class="emailnotice" id="notice"><%= notice %></p>
+<%= form_tag("/requeststatus", method: "post") do %>
+<p class = "emailfield">
+<%= label_tag(:email, "Enter Your Email:") %>
+<%= text_field_tag(:email)  %><br><br>
+</p>
+
+<p class = "btnfield">
+<%= submit_tag "Check Status" , class: " btn btn-primary" %>
+</p>
+<% end %>
+
+</div>

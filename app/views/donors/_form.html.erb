@@ -1,0 +1,64 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ 
+<div class="donorcontainer">
+
+<%= form_with(model: donor, local: true) do |form| %>
+  <% if donor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(donor.errors.count, "error") %> prohibited this donor from being saved:</h2>
+
+      <ul>
+      <% donor.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %><br>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :phoneNo %><br>
+    <%= form.text_field :phoneNo %>
+  </div>
+
+  <div class="field">
+    <%= form.label :gender %><br>
+    <%= form.radio_button :gender, 'Male' %> Male &emsp;
+    <%= form.radio_button :gender, 'Female' %> Female &emsp;
+    <%= form.radio_button :gender, 'Other' %> Other &emsp;
+  </div>
+
+  <div class="field">
+    <%= form.label :age %><br>
+    <%= form.number_field :age %>
+  </div>
+
+  <div class="field">
+    <%= form.label :city %><br>
+    <%= form.text_field :city %>
+  </div>
+
+  <div class="field">
+    <%= form.label :bloodGroup %><br>
+    <%= form.select(:bloodGroup, options_for_select([['B+','B+'],['B-','B-'],['A+','A+'],['A-','A-'],['O+','O+'],['O-','O-'],['AB+','AB+'],['AB-','AB-']]))%>
+  </div>
+
+  <div class="field">
+    <%= form.label :lastDonateDate %><br>
+    <%= form.date_select :lastDonateDate %>
+  </div>
+
+  <div class="actions">
+    <%= submit_tag "Create Donor" , class: "btn btn-primary" %>
+  </div>
+<% end %>
+</div>

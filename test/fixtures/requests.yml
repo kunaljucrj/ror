@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  noOfDonors: 1
+  bloodGroup: MyString
+  city: MyString
+  email: MyString
+
+two:
+  noOfDonors: 1
+  bloodGroup: MyString
+  city: MyString
+  email: MyString
